@@ -50,5 +50,31 @@ class ObjetoA(object):
 
 Los requerimientos conistian en implementar un EndPoint con el fin de entrgar la informacion solicitada por un cliente, en el diseño de la ingenieria del sistema 
 se implementa un FrondController en cargado de recivir la solicitud http en un URI y analizar el el modelo - recurso y parametros para esto se implemento en el archivo *xfc.py* (rootsystem/application/xfc.py) encargado de estructurar la URI e intanciar al controlador de cada modelo, diseñado en patron MVC  pero en este caso se entraga la informacion solicitada en formato JSON.
-
-
+```python3
+class SongController(object):
+    
+    def __init__(self, api):
+        self.model = Song()
+        self.view = SongView()
+        self.api = api
+```
+El recurso el cual se encarga de solicitar al modelo entregar los datos solicitados, SongHelper() es un modelo auxiliar que le permite realizar las intancia SQL y obtener la consulta.
+```python3
+def search_lookup(self):
+        """ An endpoint to provide a search lookup within the tracks
+             (at least by name, but is open to any suggestions) """
+        form = FieldStorage()
+        json = form['data'].value
+        dato = loads(json)
+        kword = data['name']
+        
+        if self.api is True:
+            try:
+                resultado = SongHelper().get_name(kword)
+                show_json(dumps(resultado))
+            except IndexError:
+                show("No existe registro")
+                exit()
+        else:
+            show("Consuma la API ->http://host/api/modulo/recurso") 
+```
