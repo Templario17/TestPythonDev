@@ -19,13 +19,14 @@ base de datos en MariaDB
 lenguaje de programacion Python3 
 
 Esctructura de directorios del proyecto :
+    ProtectWeb
     - logs/
     - private/
     - rootsystem/
-        - application/
-            - core/
-            - modules/
-        - static/
+      - application/
+        - core/
+        - modules/
+      - static/
         
 se implemnta un disemo de base de datos realisando un mapero relacional de Objetos en una base de datos de MySql contenido en el archivo *application.sql* en el directorio del rootsistem/application.
 
